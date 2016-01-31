@@ -34,7 +34,9 @@ destbase=${target}
 
 function archiveit {
     mkdir -p ${destdir}
-    echo "tar -L -zcf ${destdir}/${destbase}_${firstsub}-${thissub}.tgz ${subarg}"
+    # note symbolic link should be resolved and replaced by their target.
+    # tested on MacOS X (bsdtar) and GNU tar.
+    echo "tar -h -zcf ${destdir}/${destbase}_${firstsub}-${thissub}.tgz ${subarg}"
     totalKbytes=0
     subarg=
 }
