@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Purpose: To package the subject data folders of a OpenfMRI dataset
+#          into tar balls of a fixed uncompressed size.
 
 IFS=$'\n'
 
@@ -41,8 +44,8 @@ function archiveit {
     subarg=
 }
 
-# note: assuming files found will not have spaces to shell
-# metacharacters in them.
+# For each subject folder, build the argument list to tar
+# until the total directory size just exceeds maxSizePerArchive
 for sub in ${target}/sub-*; do
 
     thissub=$(echo `basename ${sub}` | sed -e "s/sub-//")
