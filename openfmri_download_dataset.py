@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#
+# Purpose: To simplify the downloading of an openfMRI dataset by using
+# the OpenfMRI API and downloading all of the dataset links.
+#
 
 import requests
 import sys, os
@@ -66,7 +70,7 @@ def __fetch_from_json (dataset):
             os.makedirs(os.path.dirname(output_path))
         except OSError as err:
             if (err.errno == 17):
-                pass
+                pass # OK if it already exists.
             else:
                 print ("Error: %s (%d)" % (err.strerror, err.errno))
                 raise
