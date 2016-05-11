@@ -56,7 +56,7 @@ for sub in ${target}/sub-*; do
 
     subarg="'${sub}' ${subarg}"
 
-    theseKbytes=$(du -sk ${sub} | awk ' { print $1 } ')
+    theseKbytes=$(du -L -sk ${sub} | awk ' { print $1 } ')
     totalKbytes=$((totalKbytes+${theseKbytes}))
 
     if [[ ${totalKbytes} -gt ${maxSizePerArchive} ]]; then
